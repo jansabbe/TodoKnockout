@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo applicatie</title>
+</head>
+<body>
+
+    <article data-bind="event: {keypress:keyPressAddTodo}">
+        <ul data-bind="template: {name:'todo',foreach:todos, afterAdd:ANIM.toevoegen, beforeRemove:ANIM.verwijderen} "></ul>
+        <button data-bind="click: addNieuweTodo">Voeg toe</button>
+        <p>
+            Aantal afgewerkte todos: <span data-bind="text:afgewerkteTodos().length"></span>
+        </p>
+        <ul data-bind="template: {name:'todo',foreach:afgewerkteTodos, afterAdd:ANIM.toevoegen, beforeRemove:ANIM.verwijderen} "></ul>
+    </article>
+
+    <script type="text/html" id="todo">
+        <li>
+            <input type="checkbox" data-bind='checked: isDone'><input type="text" data-bind='value:text'><button data-bind="click:function () {VM.verwijder(this)}">Verwijderen</button>
+        </li>
+    </script>
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js'></script>
+    <script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
+    <script src='lib/knockout-1.2.0.js'></script>
+    <script src="lib/todo.js"></script>
+    <script>
+        $(function () {
+            VM = TD.viewmodel();
+            ko.applyBindings(VM);
+            $('input[type*="text"]:first').focus();
+        });
+    </script>
+</body>
+</html>

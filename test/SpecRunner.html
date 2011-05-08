@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" href="lib/jasmine-1.0.2/jasmine.css">
+  <script src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <script src="../lib/knockout-1.2.0.js"></script>
+  <script src="../lib/todo.js"></script>
+  <script src="spec/specTodo.js"></script>
+
+</head>
+<body>
+
+<script>
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
